@@ -22,7 +22,7 @@ public class PomodoroTimer {
                 case "-m" -> mult = Integer.parseInt(cmd[++i]);
                 case "--help" -> {
                     System.out.println("""
-                        \nPomodoro - это приложение для улучшения личной эффективности
+                        Pomodoro - это приложение для улучшения личной эффективности
                         -w - сколько работать
                         -b - сколько отдыхать
                         -count - количество циклов
@@ -51,35 +51,35 @@ public class PomodoroTimer {
     private static void printProgress(String process, int time, int size) throws InterruptedException {
         int length;
         int rep;
-        length = 60 * time / size;
-        rep = 60 * time / length;
-        int stretchb = size / (3 * time);
-        for (int i = 1; i <= rep; i++) {
+        length = 60* time / size;
+        rep = 60* time /length;
+        int stretchb = size /(3* time);
+        for(int i=1; i <= rep; i++){
             double x = i;
-            x = 1.0 / 3.0 * x;
+            x = 1.0/3.0 *x;
             x *= 10;
             x = Math.round(x);
             x /= 10;
-            double w = time * stretchb;
-            double percent = (x / w) * 1000;
-            x /= stretchb;
+            double w = time *stretchb;
+            double percent = (x/w) *1000;
+            x /=stretchb;
             x *= 10;
             x = Math.round(x);
             x /= 10;
             percent = Math.round(percent);
             percent /= 10;
-            System.out.print(process + percent + "% " + (" ").repeat(5 - (String.valueOf(percent).length())) + "[" + ("#").repeat(i) + ("-").repeat(rep - i) + "]    ( " + x + "min / " + time + "min )" + "\r");
-            if (true) {
+            System.out.print(process + percent+"% " + (" ").repeat(5 - (String.valueOf(percent).length())) +"[" + ("#").repeat(i) + ("-").repeat(rep - i)+"]    ( " + x +"min / " + time +"min )"+  "\r");
+            if(true){
                 TimeUnit.SECONDS.sleep(length);
             }
         }
+        System.out.println();
     }
 /**********************************************************************/
     private static void progression(int workTime, int breakTime, int iteration, int mult) throws InterruptedException {
         timer(workTime, breakTime);
         for (int i = 2; i <= iteration; i++) {
             timer(workTime *= mult, breakTime);
-
         }
     }
 }
